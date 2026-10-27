@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PromptForge AI — Optimization Lab</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <div class="brand"><span class="mark">✦</span> PromptForge <b>AI</b></div>
+      <div class="small">RESEARCH WORKSPACE</div>
+      <nav>
+        <button class="nav active" data-page="lab" id="nav-lab">◈ &nbsp; Optimization Lab</button>
+        <button class="nav" data-page="history" id="nav-history">◷ &nbsp; Experiment History</button>
+        <button class="nav" data-page="about" id="nav-about">▤ &nbsp; Methodology</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="pill" id="provider">● Connecting...</div>
+        <p>Adaptive prompt research<br>Version 1.1.0</p>
+      </div>
+    </aside>
+
+    <main>
+      <header>
+        <div>
+          <div class="eyebrow">AI SYSTEMS / RESEARCH LAB</div>
+          <h1>Prompt <em>Optimization</em> Studio</h1>
+          <p class="muted">Analyze instructions, generate alternatives, and compare measurable outputs.</p>
+        </div>
+        <div class="badge" id="systemBadge">✧ EXPERIMENTAL WORKSPACE</div>
+      </header>
+
+      <section id="lab" class="page">
+        <div class="grid">
+          <article class="card input">
+            <div class="section-title">
+              <h2>01 / Your Prompt</h2>
+              <span>INPUT</span>
+            </div>
+            <label for="prompt">Original instruction</label>
+            <textarea id="prompt" rows="6" placeholder="e.g. Explain machine learning to beginners">Explain machine learning to a computer science student.</textarea>
+
+            <label for="audience">Target audience</label>
+            <input id="audience" value="a third-year computer science student">
+
+            <label for="expected">Reference answer (optional, for keyword-recall evaluation)</label>
+            <textarea id="expected" rows="2" placeholder="Add a ground-truth reference answer..."></textarea>
+
+            <div class="route-container">
+              <label for="route">Routing policy</label>
+              <select id="route">
+                <option value="auto" selected>Auto (Local first, Cloud fallback)</option>
+                <option value="local">Local Only (Ollama)</option>
+                <option value="cloud">Cloud Only (OpenAI-compatible)</option>
+                <option value="mock">Mock Demo (Offline simulation)</option>
+              </select>
+              <div id="routePreview" class="route-preview">⚡ Initializing route preview...</div>
+            </div>
+
+            <div class="actions">
+              <button class="secondary" id="analyze">Analyze Prompt</button>
+              <button class="primary" id="optimize">✦ Generate Variants</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="section-title">
+              <h2>02 / Prompt Diagnostics</h2>
+              <span>ANALYSIS</span>
+            </div>
+            <div id="diagnostics" class="empty">Run an analysis to identify missing context, constraints, and output requirements.</div>
+          </article>
+        </div>
+
+        <article class="card">
+          <div class="section-title">
+            <h2>03 / Optimization Strategies</h2>
+            <span>SELECT TO COMPARE</span>
+          </div>
+          <div id="strategyList" class="strategies"></div>
+          <div class="actions">
+            <button class="primary" id="compare">▶ Run Selected Strategies</button>
+            <span class="muted" id="status">Ready</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="section-title">
+            <h2>04 / Results &amp; Evaluation</h2>
+            <span>EXPERIMENT OUTPUT</span>
+          </div>
+          <div id="results" class="empty">Run a comparison to see prompts, model responses, latency, and transparent evaluation proxies.</div>
+        </article>
+      </section>
+
+      <section id="history" class="page hidden">
+        <article class="card">
+          <div class="section-title">
+            <h2>Experiment History &amp; Analytics</h2>
+            <button class="secondary" id="refresh">Refresh</button>
+          </div>
+          <div id="historyStats" class="stat-grid"></div>
+          <div id="historyRows"></div>
+        </article>
+      </section>
+
+      <section id="about" class="page hidden">
+        <article class="card">
+          <h2>Research methodology</h2>
+          <p>PromptForge generates six candidate strategies and evaluates model outputs using transparent heuristics. The mock provider enables offline exploration without an API key; local inference runs with Ollama (e.g. <code>gemma3:1b</code> or <code>llama3.2</code>); and cloud route connects to any OpenAI-compatible provider.</p>
+          <p>Relevance proxy measures keyword overlap with the original prompt. Length proxy measures response length. Structure proxy detects list or heading patterns. When supplied, reference keyword recall measures overlap with a reference answer. None of these scores independently establish factual correctness.</p>
+          <p>For an academic experiment, connect a real model, define a held-out task dataset, use unit tests or human grading, compare with unoptimized prompts, and report uncertainty and limitations.</p>
+        </article>
+      </section>
+
+      <footer>PromptForge AI · Evidence over hype · Local-first experiments</footer>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
